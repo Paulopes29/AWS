@@ -14,8 +14,6 @@ jobs:
           node-version: 16.14.2
       - name: installation dependencies
         run: npm install
-        env:
-          CI: false
       - name: App build
         run: npm run build
 

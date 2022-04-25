@@ -1,4 +1,4 @@
-name: ContinuousIntegration
+name: ContinuousIntegrationBuild
 
 on: [push]
 
@@ -6,9 +6,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: Run first echo script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project,
-          echo test2
+      - name: Clone repo
+        uses: actions/checkout@v2
+      - name: Nodejs
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: installation dependencies
+        run: npm install
+        env:
+          CI: true
+      - name: App build
+        run: npm run build
+
+      - name: Share artifact inside workflow
+        uses: actions/upload-artifact@v1
+        with:
+          name: react-github-actions-build
+          path: build

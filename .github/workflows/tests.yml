@@ -11,7 +11,7 @@ jobs:
       - name: Nodejs
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: 16.14.2
       - name: installation dependencies
         run: npm install
         env:

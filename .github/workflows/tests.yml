@@ -28,4 +28,6 @@ jobs:
           heroku_app_name: "calculatricedufutur"
           heroku_email: "meryg.beguet@gmail.com"
           dontuseforce: 1
-
+          justlogin: true
+      - run: |
+        heroku container:login

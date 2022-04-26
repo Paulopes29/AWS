@@ -7,7 +7,6 @@ before_script:
 
 stages:
   - staging
-  - production
 
 staging:
   type: deploy

@@ -2,7 +2,6 @@ name: ContinuousIntegrationBuild
 
 on:
   push:
-    branches: [feat_mb-1]
 
 jobs:
   build:

@@ -1,24 +1,23 @@
 {
   "name": "hhpm",
-  "version": "0.1.2",
+  "version": "0.1.1",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.1.1",
     "@testing-library/user-event": "^13.5.0",
-    "enzyme": "^3.11.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-scripts": "5.0.1",
-    "sinon": "^13.0.2",
+    "react-test-renderer": "^18.0.0",
     "standard-version": "^9.3.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "CI=false && react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "release": "standard-version"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -36,12 +35,9 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
-    ],
-    "homepage": [
-      "https://miguel1799.github.io/projet"
     ]
   },
   "devDependencies": {
-    "@testing-library/react": "^13.1.1"
+    "enzyme": "^3.11.0"
   }
 }

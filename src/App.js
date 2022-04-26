@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import AreaCompo from './Components/Area/AreaCompo';
 

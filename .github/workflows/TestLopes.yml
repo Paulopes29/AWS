@@ -6,6 +6,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: Run first echo script
+      - name: Clone repo
+        uses: actions/checkout@v2
+      - name: Nodejs
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.14.2
+      - name: tests
         run: npm run test

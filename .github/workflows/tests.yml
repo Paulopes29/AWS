@@ -1,4 +1,4 @@
-name: ContinuousIntegration
+name: Intégration continue
 
 on: [push]
 
@@ -6,9 +6,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: Run first echo script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project,
-          echo test2
+      - name: Clone repo
+        uses: actions/checkout@v2
+      - name: Nodejs
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.14.2
+      - name: install
+        run: npm install
+      - name: tests
+        run: npm run test

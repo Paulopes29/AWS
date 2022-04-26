@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/hhpm.iml" filepath="$PROJECT_DIR$/.idea/hhpm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/AWS.iml" filepath="$PROJECT_DIR$/.idea/AWS.iml" />
     </modules>
   </component>
 </project>

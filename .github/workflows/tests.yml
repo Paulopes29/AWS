@@ -30,10 +30,8 @@ jobs:
           dontuseforce: 1
           justlogin: true
       - name: "Login to heroku registry"
-      run: heroku container:login
-
+        run: heroku container:login
       - name: "Build and push to heroku registry"
         run: heroku container:push feat_mb-1 --app calculatricedufutur
-
       - name: "Releases the container"
         run: heroku container:release feat_mb-1 --app calculatricedufutur

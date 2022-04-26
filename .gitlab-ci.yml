@@ -7,10 +7,20 @@ before_script:
 
 stages:
   - staging
+  - prod
 
 staging:
   type: deploy
   stage: staging
   image: ruby:latest
+  only: hhpm_dev_1.0
+  script:
+    - dpl --provider=heroku --app=$HEROKU_APP_STAGING --api-key=$HEROKU_API_KEY
+
+prod:
+  type: deploy
+  stage: prod
+  image: ruby:latest
+  only: hhpm_prod_1.0
   script:
     - dpl --provider=heroku --app=$HEROKU_APP_STAGING --api-key=$HEROKU_API_KEY

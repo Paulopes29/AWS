@@ -8,6 +8,4 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Run first echo script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project,
+        run: npm run test

@@ -29,8 +29,6 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
-        with:
-          ref: feat_mb-1
       - name: Deploy to Heroku
         uses: akhileshns/heroku-deploy@v3.12.12
         with:

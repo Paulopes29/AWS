@@ -1,5 +1,5 @@
 
-export function Area(tailleCote) {
+export function SquareArea(tailleCote) {
 
     var res = tailleCote * tailleCote;
     console.log(res);

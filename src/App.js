@@ -1,5 +1,5 @@
 import './App.css';
-import AreaCompo from './Components/Area/AreaCompo';
+import {AreaCompo} from './Components/Area/AreaCompo.js';
 
 function App() {
   return (

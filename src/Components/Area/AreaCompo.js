@@ -1,40 +1,53 @@
-//Importation de mes méthode de calculs
+//Importation de mes méthodes de calculs
 import { CercleArea } from "./CercleArea"
 import { RectangleArea } from "./RectangleArea"
 import { SquareArea } from "./SquareArea"
 
-function AreaCompo() {
+import React from "react";
 
-    //Définition des DIV pour chacun des calculs
-    let dsquare = document.getElementById("dsquare");
-    let dcircle = document.getElementById("dcircle");
-    let drectangle = document.getElementById("drectangle");
+//Pour tester mon composant j'utilise "data_testid" car c'est une bonne pratique. Si un dev viens retoucher mon code et modifie un "id" classique
+//Cela va casser tout les tests qui se référaient à l'id classique tandis qu'avec "data_testid" permet d'éviter ce genre de problème.
+
+
+export function AreaCompo() {
 
     // AFFICHAGE DES BLOCKS DE CALCULS
     const Square = () => {
+        //Définition des DIV pour chacun des calculs
+        let dsquare = document.getElementById("dsquare");
+        let dcircle = document.getElementById("dcircle");
+        let drectangle = document.getElementById("drectangle");
         //J'affiche que les block pour le calcul du carré
         dsquare.style.display = "block";
         dcircle.style.display = "none";
         drectangle.style.display = "none";
         //Je remet mon résultat à vide
-        document.getElementById("Resultat").innerHTML = "<span id='test'></span>";
+        document.getElementById("Resultat").innerHTML = "<span></span>";
 
     };
     const Circle = () => {
+        //Définition des DIV pour chacun des calculs
+        let dsquare = document.getElementById("dsquare");
+        let dcircle = document.getElementById("dcircle");
+        let drectangle = document.getElementById("drectangle");
         //J'affiche que les block pour le calcul du cercle
         dsquare.style.display = "none";
         dcircle.style.display = "block";
         drectangle.style.display = "none";
         //Je remet mon résultat à vide
-        document.getElementById("Resultat").innerHTML = "<span id='test'></span>";
+        document.getElementById("Resultat").innerHTML = "<span></span>";
     };
     const Rectangle = () => {
+        //Définition des DIV pour chacun des calculs
+        let dsquare = document.getElementById("dsquare");
+        let dcircle = document.getElementById("dcircle");
+        let drectangle = document.getElementById("drectangle");
         //J'affiche que les block pour le calcul du rectangle
         dsquare.style.display = "none";
         dcircle.style.display = "none";
         drectangle.style.display = "block";
         //Je remet mon résultat à vide
-        document.getElementById("Resultat").innerHTML = "<span id='test'></span>";
+        document.getElementById("Resultat").innerHTML = "<span></span>";
     };
 
     //CALCUL DES RESULTATS
@@ -43,14 +56,14 @@ function AreaCompo() {
         var Val = document.getElementById("circleIn").value;
         var res = CercleArea(Val);
         //J'affiche le résultat
-        document.getElementById("Resultat").innerHTML = "<span id='test'>" + res + "</span>";
+        document.getElementById("Resultat").innerHTML = "<span>" + res + "</span>";
     };
     const CalSquare = () => {
         // Je récupère mes valeurs pour le calcul
         var Val = document.getElementById("squareIn").value;
         var res = SquareArea(Val);
         //J'affiche le résultat
-        document.getElementById("Resultat").innerHTML = "<span id='test'>" + res + "</span>";
+        document.getElementById("Resultat").innerHTML = "<span>" + res + "</span>";
     };
     const CalRect = () => {
         // Je récupère mes valeurs pour le calcul
@@ -58,21 +71,21 @@ function AreaCompo() {
         var ValLenght = document.getElementById("rectInLo").value;
         var res = RectangleArea(ValWidth, ValLenght);
         //J'affiche le résultat
-        document.getElementById("Resultat").innerHTML = "<span id='test'>" + res + "</span>";
+        document.getElementById("Resultat").innerHTML = "<span>" + res + "</span>";
     };
 
     return (
         <div>
             <div>
                 <tr>
-                    <td><button id="square" onClick={Square}>Square</button></td>
-                    <td><button id="circle" onClick={Circle}>Circle</button></td>
-                    <td><button id="rectangle" onClick={Rectangle}>Rectangle</button></td>
+                    <td><button data-testid="TBTN_square" id="square" onClick={Square}>Square</button></td>
+                    <td><button data-testid="TBTN_circle" id="circle" onClick={Circle}>Circle</button></td>
+                    <td><button data-testid="TBTN_rectangle" id="rectangle" onClick={Rectangle}>Rectangle</button></td>
                 </tr>
             </div>
 
-            <div id="dsquare">
-                <p>Square Area Calculator</p>
+            <div data_testid="MyTest"id="dsquare">
+                <p data_testid="Title">Square Area Calculator</p>
                 <label for="squareIn">Side size : </label>
                 <input id="squareIn"></input><br></br>
                 <button onClick={CalSquare}>Calculate</button>
@@ -91,15 +104,12 @@ function AreaCompo() {
                 <input id="rectInLo"></input><br></br>
                 <button onClick={CalRect}>Calculate</button>
             </div>
-            <div><p>Résultat : </p><p id="Resultat"></p></div>
-
-
+            <div>
+                <p>Résultat : </p><p id="Resultat"></p>
+            </div>
 
         </div>
-
-
 
     );
 }
 
-export default AreaCompo;

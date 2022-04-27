@@ -1,4 +1,4 @@
-image: node:latest
+image: node:16.14.2
 
 before_script:
   - apt-get update -qy
@@ -6,14 +6,26 @@ before_script:
   - gem install dpl
 
 stages:
+  - tests
   - staging
   - prod
+
+tests:
+  type: tests
+  stage: tests
+  only:
+    - /^preprod_[0-9]+(?:.[0-9]+)+$/
+  image: weboaks/node-karma-protractor-chrome
+  script:
+    - npm install --silent
+    - npm run test
 
 staging:
   type: deploy
   stage: staging
   image: ruby:latest
-  only: hhpm_dev_1.0
+  only:
+    - /^preprod_[0-9]+(?:.[0-9]+)+$/
   script:
     - dpl --provider=heroku --app=$HEROKU_APP_STAGING --api-key=$HEROKU_API_KEY
 
@@ -21,6 +33,7 @@ prod:
   type: deploy
   stage: prod
   image: ruby:latest
-  only: hhpm_prod_1.0
+  only:
+    - /^prod_[0-9]+(?:.[0-9]+)+$/
   script:
-    - dpl --provider=heroku --app=$HEROKU_APP_STAGING --api-key=$HEROKU_API_KEY
+    - dpl --provider=heroku --app=$HEROKU_APP_STAGING_PROD --api-key=$HEROKU_API_KEY

@@ -1,0 +1,26 @@
+name: ContinuousIntegrationProd
+on:
+  push:
+    branches: [hhpm_prod_1.0]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v2
+      - name: Nodejs
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.14.2
+      - name: installation dependencies
+        run: npm install
+  heroku-deploy:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: "prodcalculatrice"
+          heroku_email: "meryg.beguet@gmail.com"
